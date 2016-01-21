@@ -1,0 +1,20 @@
+h2 商品
+
+= @guitar.name
+br
+= @guitar.price
+br
+= link_to 'Edit', edit_guitar_path(@guitar)
+= link_to 'Back', guitars_path
+br
+
+div id='web_order_qrcode'
+br
+br
+br
+
+div id='front_order_qrcode'
+
+javascript:
+  new QRCode(document.getElementById("web_order_qrcode"), "#{qfpay_web_pay_url('amt'=>@guitar.price, 'id'=>@guitar.id)}");
+  new QRCode(document.getElementById("front_order_qrcode"), "#{qfpay_wechat_front_pay_url('amt'=>@guitar.price, 'id'=>@guitar.id)}");

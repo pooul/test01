@@ -1,0 +1,17 @@
+
+h2 Listing Guitars
+
+table class='table'
+  thead
+    th name
+    th price
+  tbody
+    -@guitars.each do |guitar|
+      tr
+        td= guitar.name
+        td= guitar.price
+        td= link_to 'Show', guitar
+        td= link_to 'Edit', edit_guitar_path(guitar)
+        td= link_to 'Destroy', guitar, method: :delete, data: { confirm: 'Are you sure?' }
+        
+= link_to 'New Guitar', new_guitar_path
